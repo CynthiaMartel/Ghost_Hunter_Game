@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="./css/estilosjuego.css">
+    <title>MasterDots enter</title>
+</head>
+<body>
+    <main>
+        <div id="contenedorgame">
+            <div id="game">
+                <!-- Aquí se pintará el panel de juego  -->
+            </div>
+            <div id="gamefinished">
+                <button id="newgame">OTRA PARTIDA</button>
+            </div>
+            <div id="tituloJuego">
+                <p>Ghost Hunt</p>
+            </div>
+        </div>
+        <div id="contenedorUsuario">
+            <form id="enterform" action="game.html">
+                <div class="itemform">
+                    <img src="./img/default-avatar.png" id="avatarImg" alt="avatar" class="avatarImg" width="26">
+                    <input type="text" id="nick" class="nick" value="nick" readonly>
+                </div>
+                <div class="itemform">
+                    <label id="lablescore" for="score">puntuacion</label>
+                    <input type="text" id="score" value="0"  class="inputGame" readonly>
+                </div>
+                <div class="itemform">
+                    <label id="labletime" for="time">tiempo restante</label>
+                    <input type="text" id="time" value="10" class="inputGame" readonly>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        Curso Frontend JS, HTML y CSS
+    </footer>
+    <!---EL CÓDIGO SCRIPT-->
+    <script src="./JS/datosusuario.js"></script> <!--Importante cargar primero el js datos usuario, para que -->
+    <script src="./JS/game.js"></script> <!--...primero gestiones y compruebe si se ha completado el formulario para acceder -->
+</body>
+</html>

@@ -4,9 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MasterDots game</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
 </head>
 <body>
+    <!---CABECERA-->
+    <header>
+        <img class="goshtgif" src="./img/goshtgif.gif" alt="Logo MasterDots">
+    </header>
+    <!--FORMULARIO USUARIO-->
+    <main>
+        <div>
+            <p id="error"></p>
+        </div>
+        <form id="enterform" action="game.html" method="GET">
+            <div class="itemform">
+                <label for="nick" class="labelnick">Introduce tu nick:</label>
+                <div class="contenedornick">
+                    <input id="nicka" class="nicka" type="text" value="@" name="nick" readonly>
+                    <input id="nick" class="nick" type="text" name="nick" required minlength="3">
+                </div>
+            </div>
+            <div class="itemform">
+                <label for="email" class="labelemail">Correo electrónico:</label>
+                <input class="email" type="email">
+            </div>
+            <div class="itemform">
+                <label for="size" class="labelsizegame">Tamaño del juego</label>
+                <select id="size" class="select" name="size">
+                    <option value="0">Elige tamaño</option>
+                    <option value="1">4x4</option>
+                    <option value="2">5x5</option>
+                    <option value="3">6x6</option>
+                </select>
+                <div class="itemform">
+                    <label for="avatar" class="labelAvatarSelected">Arrastra tu avatar</label>
+                    <div id="avatarContainer">
+                        <!-- Avatar principal a la izquierda -->
+                        <div id="avatarSelected">
+                            <div id="avatarPrincipal">
+                                <img src="./img/avatarVampire-transformed.png" alt="avatar" id="avatarImg" draggable="true" width="110">
+                            </div>
+                        </div>
+                        <!-- Cuadrícula de avatares a la derecha -->
+                        <div id="avatargrid">
+                            <div class="avatarItem">
+                                <img src="./img/momieAvatar-transformed.png" class="avatarImgItem" alt="individualAvatar" width="90" draggable="true">
+                            </div>
+                            <div class="avatarItem">
+                                <img src="./img/SkelletonAvatar-transformed.png" class="avatarImgItem" alt="individualAvatar" width="90" draggable="true">
+                            </div>
+                            <div class="avatarItem">
+                                <img src="./img/avatarVampire-transformed.png" class="avatarImgItem" alt="individualAvatar" width="90" draggable="true">
+                            </div>
+                            <div class="avatarItem">
+                                <img src="./img/CatAvatar-transformed.png" class="avatarImgItem" alt="individualAvatar" width="95" draggable="true">
+                            </div>
+                            <div class="avatarItem">
+                                <img src="./img/zombiesAvatar-transformed.png" class="avatarImgItem" alt="individualAvatar" width="90" draggable="true">
+                            </div>
+                            <div class="avatarItem">
+                                <img src="./img/avatarWitch-transformed.png" class="avatarImgItem" alt="individualAvatar" width="90" draggable="true">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            <div class="itemform">
+                <input id="jugar" class="jugar" type="submit" value="JUGAR">
+            </div>
+        </form>
+    </main>
+    <!--PIE DE PÁGINA-->
+    <footer>
+        <p>Curso FrontEnd HTML, CSS Y JSS</p>
+    </footer>
     
-    
+    <!--SRIPT-->
+    <script src="./JS/datosusuario.js"></script>
+    <script src="./JS/app.js"></script>  
 </body>
 </html>

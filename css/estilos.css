@@ -1,0 +1,284 @@
+/*FORMULARIO*/
+/*GENERAL*/
+body{
+    background-color: #2b2a2a;
+    color:white;
+    font-family: "Montserrat", sans-serif;
+}
+header,footer{
+    text-align: center;
+    width:100%;
+    margin:5px auto 0px auto;
+    
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    row-gap:20px;
+    font-size:20px;
+    justify-content: center;
+    
+}
+
+main {
+    width: 500px; /* Aumentamos el ancho para dar más espacio a los avatares */
+    margin: 40px auto 0px auto;
+}
+
+    
+img { max-width: 100%; }
+
+.itemform {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    
+}
+
+/*MÁS CONCRETO*/
+.goshtgif{
+    height: 200px;
+}
+
+.labelnick, .labelemail, .labelsizegame{
+    
+    padding-bottom:10px;
+    
+    
+}
+.labelAvatarSelected {
+    margin-top: 20px; /* Aumenta la separación con el selector de tamaño */
+    padding-bottom: 10px; /* Mantiene el espacio con el contenido de abajo */
+}
+
+.nick, .select, .jugar, .email{
+    font-family: "Montserrat", sans-serif;
+    background-color: whitesmoke;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px 0px 10px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Incluye padding y borde dentro del ancho total */
+ 
+}
+
+.jugar{
+    align-self: flex-end; /* Coloca el botón a la derecha */
+    background-color: rgb(137, 156, 172);
+    color:white;
+    font-weight: 450;
+    font-size:20px;
+    border-radius: 8px;
+    width: 150px;
+    border:none;
+    cursor: pointer;
+    margin-top: 20px; /* Aumenta el espacio entre el botón y los avatares */
+    margin-left: 350px; /* Empuja el botón hacia la derecha */
+}
+.jugar:hover{
+    color:black;
+}
+form .contenedornick {
+    display: flex; /* Alinea los inputs en fila */
+    gap: 0px;     /* Añade espacio entre los inputs */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nicka {
+    width: 40px;    /* Ajusta el ancho del input con el valor "@" */
+    text-align: center;
+    border-radius:5px 0px 0px 5px;
+    border: 1px solid rgb(126, 124, 124);
+    font-family: "Montserrat", sans-serif;
+    background-color: rgb(126, 124, 124);
+}
+.nick {
+    border-radius:0px 5px 5px 0px; ;
+}
+#error{
+    text-align: center;
+    color:rgb(209, 81, 81);
+    font-weight:200;
+    font-size:15px;
+    margin:20px;
+}
+
+#avatarContainer {
+    display: flex; /* Disposición en fila para los elementos dentro de este contenedor */
+    align-items: flex-start; /* Alinea verticalmente al inicio */
+    justify-content: flex-start; /* Alinea los elementos a la izquierda */
+    gap: 30px; /* Espacio entre el avatar principal y la cuadrícula de avatares */
+    margin-top: 5px;
+}
+
+#avatarSelected {
+    display: block; /* Mantiene el avatar principal en su lugar */
+    width: 130px;
+   
+    align-items: center; /* Ajusta el tamaño del contenedor del avatar principal */
+}
+
+#avatargrid {
+    display: flex; /* Utilizamos flex para alinear los avatares en fila */
+    flex-direction: row; /* Asegura que los avatares estén en una fila horizontal */
+    flex-wrap: wrap; /* Permite que los avatares se muevan a una nueva fila si no caben en la actual */
+    gap: 15px; /* Espacio entre los avatares */
+}
+
+#avatarPrincipal {
+    display: flex;
+    background-color: azure;
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 125px;
+    height: 125px;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatarItem {
+    background-color: azure;
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+/*MEDIA RESPOSIVE*/
+
+/* Media Query para pantallas de teléfonos móviles */
+@media (max-width: 600px) {
+    body {
+        font-size: 16px; /* Reduce el tamaño general de la fuente */
+    }
+    
+    main {
+        width: 90%; /* Ajusta el ancho del contenido principal */
+        margin: 50px auto 0px auto; /* Reduce el margen superior */
+    }
+    
+    form {
+        font-size: 18px; /* Reduce el tamaño de la fuente en el formulario */
+        row-gap: 15px; /* Reduce el espacio entre elementos del formulario */
+    }
+    
+    .goshtgif {
+        height: 150px; /* Reduce la altura del gif */
+    }
+    
+    .labelnick, .labelemail, .labeltamanojuego {
+        padding-bottom: 8px; /* Ajusta el padding inferior de las etiquetas */
+    }
+    
+    .nick, .select, .jugar, .email {
+        font-size: 16px; /* Ajusta el tamaño de la fuente en los inputs */
+        padding: 8px 0; /* Ajusta el padding de los inputs */
+    }
+    
+    .jugar {
+        font-size: 18px; /* Ajusta el tamaño de la fuente del botón */
+    }
+    
+    form .contenedornick {
+        flex-direction: column; /* Cambia la dirección de los inputs a columna */
+        gap: 10px; /* Añade un espacio entre los inputs */
+    }
+    
+    .nicka {
+        width: 100%; /* Ajusta el ancho para que ocupe todo el espacio disponible */
+        border-radius: 5px; /* Redondea los bordes */
+        text-align: left; /* Alinea el texto a la izquierda */
+    }
+    
+    .nick {
+        border-radius: 5px; /* Redondea los bordes */
+        width: 100%; /* Ajusta el ancho para que ocupe todo el espacio disponible */
+    }
+}
+@media (max-width: 1024px) {
+    main {
+        width: 90%; /* Aumenta el ancho del contenido principal para aprovechar mejor el espacio */
+        margin: 60px auto 0px auto; /* Reduce el margen superior */
+    }
+    
+    .goshtgif {
+        height: 180px; /* Ajusta ligeramente la altura del gif */
+    }
+
+    form {
+        font-size: 18px; /* Reduce ligeramente el tamaño de la fuente */
+    }
+
+    .jugar {
+        font-size: 18px; /* Ajusta el tamaño de la fuente del botón */
+    }
+}
+@media (max-width: 835px) {
+    main {
+        width: 85%; /* Ajusta el ancho del contenido */
+        margin: 50px auto 0px auto;
+    }
+    
+    .goshtgif {
+        height: 170px;
+    }
+
+    form {
+        font-size: 17px; /* Ajusta el tamaño de la fuente en el formulario */
+    }
+
+    .jugar {
+        font-size: 17px; /* Ajusta el tamaño de la fuente del botón */
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        width: 80%; /* Ajusta el ancho para tablets */
+        margin: 40px auto 0px auto;
+    }
+
+    .goshtgif {
+        height: 160px; /* Reduce la altura del gif */
+    }
+
+    form {
+        font-size: 16px; /* Reduce el tamaño de la fuente en el formulario */
+    }
+
+    .jugar {
+        font-size: 16px; /* Ajusta el tamaño de la fuente del botón */
+    }
+    
+    form .contenedornick {
+        flex-direction: column; /* Los inputs se muestran en columna en pantallas más pequeñas */
+        gap: 8px; /* Ajusta el espacio entre los inputs */
+    }
+    
+    .nicka {
+        width: 100%;
+        border-radius: 5px; /* Redondea los bordes */
+    }
+
+    .nick {
+        width: 100%;
+        border-radius: 5px; /* Redondea los bordes */
+    }
+}
+
+
+
+
+

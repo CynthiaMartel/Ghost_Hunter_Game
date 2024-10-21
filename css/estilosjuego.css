@@ -1,0 +1,85 @@
+/*GENERAL*/
+body{
+    background-color: #2b2a2a;
+    color:white;
+    font-family: "Montserrat", sans-serif;
+}
+header,footer{
+    text-align: center;
+    width:100%;
+    margin:5px auto 0px auto;
+    
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    row-gap:20px;
+    font-size:20px;
+    justify-content: center;
+    
+}
+
+main {
+    width: 500px; /* Aumentamos el ancho para dar más espacio a los avatares */
+    margin: 40px auto 0px auto;
+}
+   
+.itemform {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    
+}
+
+/*MÁS CONCRETO*/
+
+
+.nick, .labescore, .labeltime{
+    
+    padding-bottom:10px;
+    
+    
+}
+
+.nick, .score, .time{
+    font-family: "Montserrat", sans-serif;
+    background-color: whitesmoke;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px 0px 10px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Incluye padding y borde dentro del ancho total */
+ 
+}
+
+.newgame{
+    align-self: flex-end; /* Coloca el botón a la derecha */
+    background-color: rgb(137, 156, 172);
+    color:white;
+    font-weight: 450;
+    font-size:20px;
+    border-radius: 8px;
+    width: 150px;
+    border:none;
+    cursor: pointer;
+    margin-top: 20px; /* Aumenta el espacio entre el botón y los avatares */
+    margin-left: 350px; /* Empuja el botón hacia la derecha */
+}
+.newgame:hover{
+    color:black;
+}
+
+.avatarImg {
+    width: 40px;    /* Ajusta el ancho del input con el valor "@" */
+    text-align: center;
+    border-radius:5px 0px 0px 5px;
+    border: 1px solid rgb(126, 124, 124);
+    font-family: "Montserrat", sans-serif;
+    background-color: rgb(126, 124, 124);
+}
+.nick {
+    border-radius:0px 5px 5px 0px; ;
+}
