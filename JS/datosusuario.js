@@ -22,6 +22,7 @@ function UserData(nick,size,email,AvatarSelected){
     sessionStorage.setItem("size", size.value); //setItem toma un valor y una clave y guarda esta informacion en el navegador
     sessionStorage.setItem("email", email.value);
     sessionStorage.setItem("avatarImg", AvatarSelected.src);
+
     return true;
 }
 //Aquí estamos "consiguiendo" con getItem el nick, es decir, para mostrarlo por console.log

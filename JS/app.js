@@ -51,6 +51,7 @@ function movingImg(event){
 
 function changingImg(event){
     AvatarSelected.src = itemImg.src; // Cambia la imagen principal a la imagen que arrastraste
+    //sessionStorage.setItem("avatarImg", AvatarSelected.src);
     console.log("Nueva imagen seleccionada:", AvatarSelected.src);
 }
 
