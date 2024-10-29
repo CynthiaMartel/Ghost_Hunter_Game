@@ -11,14 +11,6 @@ header,footer{
     
 }
 
-form{
-    display:flex;
-    flex-direction:column;
-    row-gap:20px;
-    font-size:20px;
-    justify-content: center;
-    
-}
 
 main {
     width: 500px; /* Aumentamos el ancho para dar más espacio a los avatares */
@@ -28,7 +20,7 @@ main {
 .itemform {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 5px;
     
 }
@@ -36,44 +28,72 @@ main {
 /*MÁS CONCRETO*/
 
 
-.nick, .labescore, .labeltime{
+#nick, #labscore, #labltime, #labelround{
     
-    padding-bottom:10px;
+    margin:20px,0px,20px,0px;
     
     
 }
 
-.nick, .score, .time{
+#nick{
     font-family: "Montserrat", sans-serif;
     background-color: whitesmoke;
-    font-size: 18px;
-    width: 100%;
-    padding: 10px 0px 10px 10px;
+    font-size: 20px;
+    width: 80px;
+    padding: 10px 10px 10px 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box; /* Incluye padding y borde dentro del ancho total */
  
 }
+#score, #time, #round{
+    font-family: "Montserrat", sans-serif;
+    background-color: whitesmoke;
+    font-size: 20px;
+    width: 160px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Incluye padding y borde dentro del ancho total */
+    initial-value: right; /*No sé como poner el puntuaje hacía la derecha*/
+ 
+}
+
 
 .newgame{
     align-self: flex-end; /* Coloca el botón a la derecha */
     background-color: rgb(137, 156, 172);
     color:white;
-    font-weight: 450;
-    font-size:20px;
+    font-weight: 90;
+    font-size:15px;
     border-radius: 8px;
-    width: 150px;
+    width: 90px;
     border:none;
     cursor: pointer;
     margin-top: 20px; /* Aumenta el espacio entre el botón y los avatares */
-    margin-left: 350px; /* Empuja el botón hacia la derecha */
+    margin-left: 410px; /* Empuja el botón hacia la derecha */
+    padding: 10px,10px,10px,10px;
 }
 .newgame:hover{
     color:black;
 }
 
 .avatarImg {
-    width: 40px;    /* Ajusta el ancho del input con el valor "@" */
+    width: 70px;    /* Ajusta el ancho del input con el valor "@" */
+    text-align: center;
+    border-radius:5px 0px 0px 5px;
+    border: 1px solid rgb(126, 124, 124);
+    font-family: "Montserrat", sans-serif;
+    background-color: rgb(126, 124, 124);
+}
+form .contenedornick {
+    display: flex; /* Alinea los inputs en fila */
+    gap: 0px;     /* Añade espacio entre los inputs */
+    width: auto;
+    box-sizing: border-box;
+}
+.nicka {
+    width: 75px;    /* Ajusta el ancho del input con la imagen del avatar seleccionado */
     text-align: center;
     border-radius:5px 0px 0px 5px;
     border: 1px solid rgb(126, 124, 124);
@@ -83,3 +103,39 @@ main {
 .nick {
     border-radius:0px 5px 5px 0px; ;
 }
+
+#gameArea {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-color: black;
+    border: 2px solid #444;
+    overflow: hidden;
+}
+
+.ghost {
+    width: 50px; /* Ajusta el tamaño del fantasma */
+    height: 50px;
+    background-image: url('/img/goshtgif.gif'); /* Asegúrate de que esta ruta apunte a la imagen del fantasma */
+    background-size: cover;
+    position: absolute; /* Para poder moverlo dentro del área de juego */
+    cursor: pointer; /* Muestra un cursor de mano para indicar que es interactivo */
+    transition: transform 0.3s ease; /* Añade una pequeña animación cuando es clicado */
+}
+
+.ghost:hover {
+    transform: scale(1.1); /* Hace que el fantasma crezca un poco al pasar el mouse encima */
+}
+.key-item {
+    width: 30px;
+    height: 30px;
+    background-color: blue; /* O cualquier color/imagen que prefieras */
+    position: absolute; /* Para que aparezca en la posición aleatoria */
+    cursor: pointer; /* Cambiar el cursor para indicar que se puede hacer clic */
+}
+
+.key-item:hover {
+    transform: scale(1.1);
+}
+
+

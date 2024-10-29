@@ -13,6 +13,7 @@ var itemImg;
 var AvatarSelected;
 
 
+
 //Funciones de evento
 /**Comprueba los datos correctos del formulario de entrada 
  * @param {eventObject} event Evento que salta al realizar el formulario
@@ -54,7 +55,6 @@ function changingImg(event){
     //sessionStorage.setItem("avatarImg", AvatarSelected.src);
     console.log("Nueva imagen seleccionada:", AvatarSelected.src);
 }
-
 
 
 //*Carga de objetos del DOM, comprobaciones y eventos del formulario*//

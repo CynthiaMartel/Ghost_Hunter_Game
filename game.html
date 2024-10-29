@@ -12,29 +12,38 @@
 <body>
     <main>
         <div id="contenedorgame">
-            <div id="game">
-                <!-- Aquí se pintará el panel de juego  -->
-            </div>
-            <div id="gamefinished">
-                <button id="newgame">OTRA PARTIDA</button>
-            </div>
             <div id="tituloJuego">
                 <p>Ghost Hunt</p>
+            </div>
+            <div id="gameArea">
+                <div class="ghost"></div><!-- Aquí se pintará el panel de juego  -->
+                <div class = "keyItem"></div>
+                
+            </div>
+            <div id="gamefinished">
+                <button id="newgame" class="newgame">OTRA PARTIDA</button>
             </div>
         </div>
         <div id="contenedorUsuario">
             <form id="enterform" action="game.html">
                 <div class="itemform">
-                    <img src="./img/default-avatar.png" id="avatarImg" alt="avatar" class="avatarImg" width="26">
-                    <input type="text" id="nick" class="nick" value="nick" readonly>
+                    <div class="contenedornick">
+                        <img src="./img/default-avatar.png" id="avatarImg" alt="avatar" class="nicka">
+                        <input type="text" id="nick" class="nick" value="nick" readonly>
+                    </div>
                 </div>
                 <div class="itemform">
-                    <label id="lablescore" for="score">puntuacion</label>
-                    <input type="text" id="score" value="0"  class="inputGame" readonly>
+                    <label id="labltime" for="time">Tiempo Restante</label>
+                    <input type="text" id="time" value="10" class="inputGame"  readonly>
                 </div>
                 <div class="itemform">
-                    <label id="labletime" for="time">tiempo restante</label>
-                    <input type="text" id="time" value="10" class="inputGame" readonly>
+                    <label id="lablscore" for="score">Puntuacion</label>
+                    <input type="text" id="score" value="0"  class="inputGame"  readonly>
+                </div>
+                <div class="itemform">
+                    <label id="labelround" for="round">Rondas</label>
+                    <input type="text" id="round" value="0" class="inputGame"  readonly>
+                </div>
                 </div>
             </form>
         </div>
