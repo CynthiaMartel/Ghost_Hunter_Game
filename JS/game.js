@@ -39,18 +39,20 @@ function filloutform() {
 }
 
 filloutform();
-setTimeout(filloutform, 100);  // Da un pequeño margen de tiempo
+setTimeout(filloutform, 100);  // Da un pequeño margen de tiempo para pasar a lo siguiente
 
-let score = 0;
+let score = 1;
+let round = 0;
 let time = 120;
 let ghosts = [];
 let ghostSpeed = 1500;
 let gameInterval;
 let timerInterval;
 let keyItemCaptured = false;
+let keyItemScore = 0;
 let currentRound = 1;
 const targetGhosts = 3; // Número de fantasmas a atrapar por ronda
-let caughtGhosts = 0;
+let caughtGhosts = 0; // Número de fantasmas atrapados por ronda que usamos en comparativa al targetGhosts
 let finalRoundAttempts = 0;
 const maxFinalRoundAttempts = 2;
 let keyItems = []; // Lista de key items
@@ -58,7 +60,9 @@ let keyItems = []; // Lista de key items
 // Elementos de HTML
 const gameArea = document.getElementById("gameArea");
 const scoreDisplay = document.getElementById("score");
+const currentRoundDisplay = document.getElementById("currentRound");
 const timeDisplay = document.getElementById("time");
+const keyItemScoreDisplay = document.getElementById("keyItemScore");
 const newGameButton = document.getElementById("newgame");
 
 // Iniciar o reiniciar el juego
@@ -67,20 +71,25 @@ function startGame() {
     clearInterval(timerInterval);
 
     score = 0;
+    keyItemScore= 0;
     time = 120;
     ghostSpeed = 1500;
     ghosts = [];
     currentRound = 1;
-    caughtGhosts = 0;
+    
     finalRoundAttempts = 0;
     keyItemCaptured = false;
+    keyyItemSpeed = 1500;
     keyItems = [];
+    keyItemScore = 0;
 
-    scoreDisplay.value = score;
     timeDisplay.value = time;
+    scoreDisplay.value = score;
+    currentRoundDisplay.value = currentRound;
+    keyItemScoreDisplay.value= keyItemScore;
     gameArea.innerHTML = "";
 
-    gameInterval = setInterval(spawnGhost, ghostSpeed);
+    gameInterval = setInterval(spawnGhost, ghostSpeed, spawnKeyItem, keyyItemSpeed);
     startTimer();
 }
 
@@ -101,7 +110,7 @@ function endGame(message) {
     clearInterval(gameInterval);
     clearInterval(timerInterval);
     ghosts.forEach(ghost => gameArea.removeChild(ghost));
-    keyItems.forEach(item => gameArea.removeChild(item));
+    keyItems.forEach(keyItem => gameArea.removeChild(keyItem));
     ghosts = [];
     keyItems = [];
     alert(`${message} Puntuación final: ${score}`);
@@ -109,11 +118,12 @@ function endGame(message) {
 
 // Crear y mostrar un fantasma o el key item
 function spawnGhost() {
-    console.log('cosas veganas')
+    
     if (currentRound === 3 && !keyItemCaptured && keyItems.length === 0) {
+        console.log('Entra en crear el KeyItem')
         spawnKeyItem(); // Aparecer key item solo en la ronda 3 si no ha sido capturado
     }else {
-        console.log('hola ELSA')
+        console.log('No entra een crear el KeyItem ')
     }
 
     // Creación de los fantasmas
@@ -155,55 +165,95 @@ function catchGhost(ghost) {
     }
 }
 
-// Crear y mostrar el key item en la tercera ronda
+// Verifica el avatar seleccionado en sessionStorage
+const selectedAvatar = localStorage.getItem("avatarImg");
+
+// Cambia la imagen de fondo según el avatar seleccionado
 function spawnKeyItem() {
-    const keyItem = document.createElement("div");
-    // Verifica el avatar seleccionado en sessionStorage
-    const selectedAvatar = localStorage.getItem("avatarImg");
+    console.log("Entra en spawnKeyItem");
+    // Recuperamos el tipo de avatar seleccionado desde sessionStorage
+    const selectedAvatar = sessionStorage.getItem("avatarType");
 
-    // Cambia la imagen de fondo según el avatar seleccionado
-    switch (selectedAvatar) {
-        case "witch":
-            keyItem.style.backgroundImage = url("../img/keyItemWitch_transformed.png");
-            break;
-        case "skeleton":
-            keyItem.style.backgroundImage = "url('/img/keyItemSkeleton_transformed.png')";
-            break;
-        case "vampire":
-            keyItem.style.backgroundImage = "url('/img/keyItemVampire_transformed.png')";
-            break;
-        case "cat":
-            keyItem.style.backgroundImage = "url('/img/keyItemCat_transformed.png')";
-            break;
-        case "zombie":
-            keyItem.style.backgroundImage = "url('/img/keyItemZombie_transformed.png')";
-            break;
-        case "mummy":
-            keyItem.style.backgroundImage = "url('/img/keyItemMummy_transformed.png')";
-            break;
-        default:
-            keyItem.style.backgroundImage = "url('/img/defaultKeyItem.png')";
-            break;
+    // Verificamos si selectedAvatar tiene algún valor almacenado
+    if (selectedAvatar) {
+        // Creamos y asignamos el `keyItem` según el avatar seleccionado
+        const keyItem = document.createElement("div");
+        document.body.appendChild(keyItem); // Agrega el keyItem al DOM
+        keyItem.classList.add("keyItem");
+
+        // Asignamos la imagen de `keyItem` en función del avatar seleccionado
+        function setKeyItemImage(selectedAvatar) {
+            switch (selectedAvatar) {
+                case "witch":
+                    keyItem.style.backgroundImage = "url('./img/KeyItemWitch5-transformed.png')";
+                    break;
+                case "skeleton":
+                    keyItem.style.backgroundImage = "url('./img/KeyItemSkelleton1-transformed.png')";
+                    break;
+                case "vampire":
+                    keyItem.style.backgroundImage = "url('./img/KeyItemVampire1-transformed.png')";
+                    break;
+                case "cat":
+                    keyItem.style.backgroundImage = "url('./img/KeyItemCat-transformed.png')";
+                    break;
+                case "zombie":
+                    keyItem.style.backgroundImage = "url('./img/KeyItemZombie1-transformed.png')";
+                    break;
+                case "mummy":
+                    keyItem.style.backgroundImage = "url('./img/KyItemMummy6-transformed.png')";
+                    break;
+                default:
+                    keyItem.style.backgroundImage = "url('./img/seta.png')";
+            }
+            // Estilo adicional para el `keyItem`
+            keyItem.style.top = `${Math.random() * 90}%`;
+            keyItem.style.left = `${Math.random() * 90}%`;
+            keyItem.style.backgroundSize = "cover";
+        }
+
+        // Llamamos a la función para asignar la imagen de `keyItem`
+        setKeyItemImage(selectedAvatar);
+
+        // Evento de captura del key item, ahora dentro del mismo bloque
+        keyItem.onclick = () => catchKeyItem(keyItem);
+
+        // Añadimos el keyItem al array
+        gameArea.appendChild(keyItem);
+        console.log("Se dibuja el keyitem en gameArea");
+        keyItems.push(keyItem);
+
+        setTimeout(() => {
+            if (keyItem.parentNode) {
+                console.log("entra en SetTimeout de KeyItem")
+                gameArea.removeChild(keyItem);
+                keyItems = keyItems.filter(k => k !== keyItem); //NECESITO QUE ME EXPLIQUEN
+        }
+        }, keyyItemSpeed);
+    
+        // Ajustar velocidad y reiniciar intervalo de aparición
+        keyyItemSpeed = Math.max(keyyItemSpeed - 15, 500); // Velocidad mínima de 500 ms
+        clearInterval(gameInterval);
+    
+        gameInterval = setInterval(spawnKeyItem, keyyItemSpeed);
+
+
+    } else {
+        console.error("No se encontró avatar seleccionado en sessionStorage.");
     }
-    keyItem.classList.add("key-item");
-    keyItem.style.top = `${Math.random() * 90}%`;
-    keyItem.style.left = `${Math.random() * 90}%`;
 
-    // Evento de captura del key item
-    keyItem.onclick = () => catchKeyItem(keyItem);
-
-    gameArea.appendChild(keyItem);
-    keyItems.push(keyItem);
 }
 
+
 // Capturar el key item
-function catchKeyItem(keyItem) {
+function catchKeyItem(keyItem, keyItemScore) {
     if (keyItem.parentNode) {
         gameArea.removeChild(keyItem);
         keyItems = keyItems.filter(item => item !== keyItem);
         keyItemCaptured = true;
+        keyItemScore ++;
+        keyItemScoreDisplay.value = "¡Atrapado!";
         alert("¡Has capturado el objeto clave!");
-        checkRoundProgress();
+        checkRoundProgress();   
     }
 }
 
@@ -211,6 +261,7 @@ function catchKeyItem(keyItem) {
 function checkRoundProgress() {
     if (currentRound < 3 && caughtGhosts >= targetGhosts) {
         currentRound++;
+        currentRoundDisplay.value = currentRound;
         caughtGhosts = 0;
         alert(`¡Has avanzado a la ronda ${currentRound}!`);
     } else if (currentRound === 3 && caughtGhosts >= 10 && keyItemCaptured) {
@@ -220,6 +271,7 @@ function checkRoundProgress() {
             finalRoundAttempts++;
             alert(`Te quedan ${maxFinalRoundAttempts - finalRoundAttempts + 1} intentos para capturar el objeto clave.`);
             caughtGhosts = 0;
+            currentRoundDisplay.value = currentRound;
         } else {
             endGame("Has perdido, no lograste capturar el objeto clave.");
         }

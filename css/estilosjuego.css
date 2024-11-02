@@ -7,50 +7,75 @@ body{
 header,footer{
     text-align: center;
     width:100%;
-    margin:5px auto 0px auto;
+    margin:40px auto 0px auto;
     
 }
 
 
 main {
+    display: flex;
+    justify-content: space-between; /* Espacio entre ambos contenedores */
+    gap:30px;
+    align-items: flex-start; /* Alinea los contenedores en la parte superior */
     width: 500px; /* Aumentamos el ancho para dar más espacio a los avatares */
     margin: 40px auto 0px auto;
 }
-   
+
+#contenedorgame {
+    /* Ajusta el tamaño del contenedor del juego */
+    width: 100%; /* Puedes ajustar el ancho según prefieras */
+}
+
+#contenedorUsuario {
+    /* Ajusta el tamaño del contenedor del usuario */
+    width: 28%; /* Ajusta este ancho también según tus necesidades */
+    margin-left: 2%; /* Añade un pequeño margen para separación */
+}
+
 .itemform {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 5px;
+    gap: 10px;
     
 }
+
 
 /*MÁS CONCRETO*/
 
-
-#nick, #labscore, #labltime, #labelround{
-    
-    margin:20px,0px,20px,0px;
-    
-    
+#labeltime, #labelscore, #labelCurrentRound, #labelkeyItemScore {
+    margin: 10px 0; /* Aplica margen superior e inferior de 10px */
 }
 
-#nick{
+.nicka {
+    width: 75px; /* Ancho del avatar */
+    height: 70px;
+    text-align: center;
+    border-radius: 5px 0 0 5px; /* Solo en las esquinas izquierda superior e inferior */
+    border: 1px solid rgb(126, 124, 124);
+    font-family: "Montserrat", sans-serif;
+    background-color: rgb(126, 124, 124);
+    box-sizing: border-box;
+}
+
+#nick {
     font-family: "Montserrat", sans-serif;
     background-color: whitesmoke;
     font-size: 20px;
-    width: 80px;
-    padding: 10px 10px 10px 10px;
-    border-radius: 5px;
+    width: 75px;
+    height: 70px;
+    padding: 10px;
+    border-radius: 0 5px 5px 0; /* Solo en las esquinas derecha superior e inferior */
     border: 1px solid #ccc;
-    box-sizing: border-box; /* Incluye padding y borde dentro del ancho total */
- 
+    border-left: none; /* Elimina el borde izquierdo para unir visualmente con .nicka */
+    box-sizing: border-box;
 }
-#score, #time, #round{
+
+#score, #time, #currentRound, #keyItemScore{
     font-family: "Montserrat", sans-serif;
     background-color: whitesmoke;
     font-size: 20px;
-    width: 160px;
+    width: 142px;
+    height: 45px;
     padding: 10px 10px 10px 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -92,24 +117,15 @@ form .contenedornick {
     width: auto;
     box-sizing: border-box;
 }
-.nicka {
-    width: 75px;    /* Ajusta el ancho del input con la imagen del avatar seleccionado */
-    text-align: center;
-    border-radius:5px 0px 0px 5px;
-    border: 1px solid rgb(126, 124, 124);
-    font-family: "Montserrat", sans-serif;
-    background-color: rgb(126, 124, 124);
-}
-.nick {
-    border-radius:0px 5px 5px 0px; ;
-}
+
 
 #gameArea {
     position: relative;
     width: 100%;
     height: 500px;
-    background-color: black;
-    border: 2px solid #444;
+    background-color:rgb(26, 26, 26);
+    border: 2px solid #3a3a3a;
+
     overflow: hidden;
 }
 
@@ -126,15 +142,17 @@ form .contenedornick {
 .ghost:hover {
     transform: scale(1.1); /* Hace que el fantasma crezca un poco al pasar el mouse encima */
 }
-.key-item {
-    width: 30px;
-    height: 30px;
-    background-color: blue; /* O cualquier color/imagen que prefieras */
-    position: absolute; /* Para que aparezca en la posición aleatoria */
-    cursor: pointer; /* Cambiar el cursor para indicar que se puede hacer clic */
+.keyItem {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
 }
 
-.key-item:hover {
+
+.keyItem:hover {
     transform: scale(1.1);
 }
 

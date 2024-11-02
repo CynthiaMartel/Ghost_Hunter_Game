@@ -50,11 +50,20 @@ function movingImg(event){
     console.log(itemImg.src); // Muestra en la consola la dirección de la imagen
 }
 
-function changingImg(event){
-    AvatarSelected.src = itemImg.src; // Cambia la imagen principal a la imagen que arrastraste
-    //sessionStorage.setItem("avatarImg", AvatarSelected.src);
+/*function changingImg(event){
+    AvatarSelected.src = itemImg.src; // Cambia la imagen principal a la imagen que arrastraste en la página de entrada
     console.log("Nueva imagen seleccionada:", AvatarSelected.src);
+    sessionStorage.setItem("avatarImg", AvatarSelected.src);
+    
+}*/
+function changingImg(event) {
+    AvatarSelected.src = itemImg.src;  // Cambia la imagen principal a la imagen que arrastraste en la página de entrada
+    const selectedAvatarType = itemImg.getAttribute("data-avatar");  // Captura el tipo de avatar usando data-avatar
+    console.log("Nuevo avatar seleccionado:", selectedAvatarType);
+
+    sessionStorage.setItem("avatarType", selectedAvatarType);  // Guarda el tipo de avatar seleccionado en sessionStorage
 }
+
 
 
 //*Carga de objetos del DOM, comprobaciones y eventos del formulario*//
