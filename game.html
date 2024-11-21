@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="./css/estilosjuego.css">
     <title>Ghost Hunter</title>
 </head>
+
 <body>
     <header>GOSTH HUNTER</header>
     <main>
@@ -17,11 +19,11 @@
             </div>
             <div id="gameArea">
                 <div class="ghost"></div><!-- Aquí se pintará el panel de juego  -->
-                <div class = "keyItem"></div>
-                
+                <div class="keyItem"></div>
+
             </div>
             <div id="gamefinished">
-                <button id="newgame" class="newgame">OTRA PARTIDA</button>
+                <button id="newgame" class="newgame">↺</button>
             </div>
         </div>
         <div id="contenedorUsuario">
@@ -34,28 +36,48 @@
                 </div>
                 <div class="itemform">
                     <label id="labeltime" for="time">Tiempo Restante</label>
-                    <input type="text" id="time" value="10" class="inputGame"  readonly>
+                    <input type="text" id="time" value="10" class="inputGame" readonly>
                 </div>
                 <div class="itemform">
                     <label id="labelscore" for="score">Puntuacion</label>
-                    <input type="text" id="score" value="0"  class="inputGame"  readonly>
+                    <input type="text" id="score" value="0" class="inputGame" readonly>
                 </div>
                 <div class="itemform">
                     <label id="labelCurrentRound" for="currentRound">Rondas</label>
-                    <input type="text" id="currentRound" value="0" class="inputGame"  readonly>
+                    <input type="text" id="currentRound" value="0" class="inputGame" readonly>
                 </div>
                 <div class="itemform">
                     <label id="labelkeyItemScore" for="keyItemScore">Objeto Mágico</label>
-                    <input type="text" id="keyItemScore" value="0" class="inputGame"  readonly>
+                    <input type="text" id="keyItemScore" value="0" class="inputGame" readonly>
                 </div>
-                </div>
-            </form>
+        </div>
+        </form>
         </div>
     </main>
     <footer>
     </footer>
+    <!-- Modal de mensajes -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close-btn">&times;</span>
+            <p id="modalMessage">¡Has avanzado a la siguiente ronda!</p>
+            <button id="continueButton">Continuar</button>
+        </div>
+    </div>
+    <!-- Modal de fin de juego -->
+    <div id="endGameModal" class="modal">
+        <div class="modal-content">
+            <span id="closeEndGameModal" class="close-btn">&times;</span>
+            <h2>¡Juego Terminado!</h2>
+            <p id="endGameMessage">¡Felicidades, has ganado el juego!</p>
+            <p id="finalScore"></p>
+            <button id="restartButton">Jugar de nuevo</button>
+        </div>
+    </div>
     <!---EL CÓDIGO SCRIPT-->
     <script src="./JS/datosusuario.js"></script> <!--Importante cargar primero el js datos usuario, para que -->
-    <script src="./JS/game.js"></script> <!--...primero gestiones y compruebe si se ha completado el formulario para acceder -->
+    <script src="./JS/game.js"></script>
+    <!--...primero gestiones y compruebe si se ha completado el formulario para acceder -->
 </body>
+
 </html>

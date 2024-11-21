@@ -1,56 +1,70 @@
 /*GENERAL*/
-body{
+body {
     background-color: #2b2a2a;
-    color:white;
+    color: white;
     font-family: "Montserrat", sans-serif;
 }
-header,footer{
+
+header,
+footer {
     text-align: center;
-    width:100%;
-    margin:40px auto 0px auto;
-    
+    width: 100%;
+    margin: 40px auto 0px auto;
+
 }
 
 
 main {
     display: flex;
-    justify-content: space-between; /* Espacio entre ambos contenedores */
-    gap:30px;
-    align-items: flex-start; /* Alinea los contenedores en la parte superior */
-    width: 500px; /* Aumentamos el ancho para dar más espacio a los avatares */
+    justify-content: space-between;
+    /* Espacio entre ambos contenedores */
+    gap: 30px;
+    align-items: flex-start;
+    /* Alinea los contenedores en la parte superior */
+    width: 500px;
+    /* Aumentamos el ancho para dar más espacio a los avatares */
     margin: 40px auto 0px auto;
 }
 
 #contenedorgame {
     /* Ajusta el tamaño del contenedor del juego */
-    width: 100%; /* Puedes ajustar el ancho según prefieras */
+    width: 100%;
+    /* Puedes ajustar el ancho según prefieras */
 }
 
 #contenedorUsuario {
     /* Ajusta el tamaño del contenedor del usuario */
-    width: 28%; /* Ajusta este ancho también según tus necesidades */
-    margin-left: 2%; /* Añade un pequeño margen para separación */
+    width: 28%;
+    /* Ajusta este ancho también según tus necesidades */
+    margin-left: 2%;
+    /* Añade un pequeño margen para separación */
 }
 
 .itemform {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    
+
 }
 
 
 /*MÁS CONCRETO*/
 
-#labeltime, #labelscore, #labelCurrentRound, #labelkeyItemScore {
-    margin: 10px 0; /* Aplica margen superior e inferior de 10px */
+#labeltime,
+#labelscore,
+#labelCurrentRound,
+#labelkeyItemScore {
+    margin: 10px 0;
+    /* Aplica margen superior e inferior de 10px */
 }
 
 .nicka {
-    width: 75px; /* Ancho del avatar */
+    width: 75px;
+    /* Ancho del avatar */
     height: 70px;
     text-align: center;
-    border-radius: 5px 0 0 5px; /* Solo en las esquinas izquierda superior e inferior */
+    border-radius: 5px 0 0 5px;
+    /* Solo en las esquinas izquierda superior e inferior */
     border: 1px solid rgb(126, 124, 124);
     font-family: "Montserrat", sans-serif;
     background-color: rgb(126, 124, 124);
@@ -64,13 +78,18 @@ main {
     width: 75px;
     height: 70px;
     padding: 10px;
-    border-radius: 0 5px 5px 0; /* Solo en las esquinas derecha superior e inferior */
+    border-radius: 0 5px 5px 0;
+    /* Solo en las esquinas derecha superior e inferior */
     border: 1px solid #ccc;
-    border-left: none; /* Elimina el borde izquierdo para unir visualmente con .nicka */
+    border-left: none;
+    /* Elimina el borde izquierdo para unir visualmente con .nicka */
     box-sizing: border-box;
 }
 
-#score, #time, #currentRound, #keyItemScore{
+#score,
+#time,
+#currentRound,
+#keyItemScore {
     font-family: "Montserrat", sans-serif;
     background-color: whitesmoke;
     font-size: 20px;
@@ -79,41 +98,57 @@ main {
     padding: 10px 10px 10px 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    box-sizing: border-box; /* Incluye padding y borde dentro del ancho total */
-    initial-value: right; /*No sé como poner el puntuaje hacía la derecha*/
- 
+    box-sizing: border-box;
+    /* Incluye padding y borde dentro del ancho total */
+    initial-value: right;
+    /*No sé como poner el puntuaje hacía la derecha*/
+
 }
 
 
-.newgame{
-    align-self: flex-end; /* Coloca el botón a la derecha */
+.newgame {
+    align-self: flex-end;
+    /* Coloca el botón a la derecha */
     background-color: rgb(137, 156, 172);
-    color:white;
-    font-weight: 90;
-    font-size:15px;
+    color: white;
+    font-weight: 2000;
+    /* Ajustado el peso de la fuente */
+    font-size: 25px;
     border-radius: 8px;
     width: 90px;
-    border:none;
+    border: none;
     cursor: pointer;
-    margin-top: 20px; /* Aumenta el espacio entre el botón y los avatares */
-    margin-left: 410px; /* Empuja el botón hacia la derecha */
-    padding: 10px,10px,10px,10px;
-}
-.newgame:hover{
-    color:black;
+    margin-top: 20px;
+    margin-left: 410px;
+    /* Empuja el botón hacia la derecha */
+    padding: 10px;
+    /* Corrigiendo el padding para que sea uniforme */
+    text-align: center;
+    /* Centra el texto dentro del botón */
+    display: inline-block;
+    /* Asegura que el texto se mantenga centrado */
 }
 
+.newgame:hover {
+    color: black;
+}
+
+
 .avatarImg {
-    width: 70px;    /* Ajusta el ancho del input con el valor "@" */
+    width: 70px;
+    /* Ajusta el ancho del input con el valor "@" */
     text-align: center;
-    border-radius:5px 0px 0px 5px;
+    border-radius: 5px 0px 0px 5px;
     border: 1px solid rgb(126, 124, 124);
     font-family: "Montserrat", sans-serif;
     background-color: rgb(126, 124, 124);
 }
+
 form .contenedornick {
-    display: flex; /* Alinea los inputs en fila */
-    gap: 0px;     /* Añade espacio entre los inputs */
+    display: flex;
+    /* Alinea los inputs en fila */
+    gap: 0px;
+    /* Añade espacio entre los inputs */
     width: auto;
     box-sizing: border-box;
 }
@@ -122,26 +157,33 @@ form .contenedornick {
 #gameArea {
     position: relative;
     width: 100%;
-    height: 500px;
-    background-color:rgb(26, 26, 26);
+    height: 600px;
+    background-color: rgb(26, 26, 26);
     border: 2px solid #3a3a3a;
 
     overflow: hidden;
 }
 
 .ghost {
-    width: 50px; /* Ajusta el tamaño del fantasma */
+    width: 50px;
+    /* Ajusta el tamaño del fantasma */
     height: 50px;
-    background-image: url('/img/goshtgif.gif'); /* Asegúrate de que esta ruta apunte a la imagen del fantasma */
+    background-image: url('/img/goshtgif.gif');
+    /* Asegúrate de que esta ruta apunte a la imagen del fantasma */
     background-size: cover;
-    position: absolute; /* Para poder moverlo dentro del área de juego */
-    cursor: pointer; /* Muestra un cursor de mano para indicar que es interactivo */
-    transition: transform 0.3s ease; /* Añade una pequeña animación cuando es clicado */
+    position: absolute;
+    /* Para poder moverlo dentro del área de juego */
+    cursor: pointer;
+    /* Muestra un cursor de mano para indicar que es interactivo */
+    transition: transform 0.3s ease;
+    /* Añade una pequeña animación cuando es clicado */
 }
 
 .ghost:hover {
-    transform: scale(1.1); /* Hace que el fantasma crezca un poco al pasar el mouse encima */
+    transform: scale(1.1);
+    /* Hace que el fantasma crezca un poco al pasar el mouse encima */
 }
+
 .keyItem {
     width: 50px;
     height: 50px;
@@ -156,4 +198,65 @@ form .contenedornick {
     transform: scale(1.1);
 }
 
+/* Estilo del Modal */
+.modal {
+    display: none;
+    /* Escondido por defecto */
+    position: fixed;
+    /* Fijo en la pantalla */
+    z-index: 1;
+    /* Se coloca sobre otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Permite desplazarse si el contenido es largo */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Fondo oscuro con opacidad */
+}
 
+.modal-content {
+    background-color: #424040;
+    margin: 15% auto;
+    /* Centra el modal en la pantalla */
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    /* Ancho del modal */
+    max-width: 500px;
+    /* Limita el ancho máximo */
+    text-align: center;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    background-color: rgb(137, 156, 172);
+    /* Color verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #3a3a3a;
+}

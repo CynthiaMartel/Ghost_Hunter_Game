@@ -3,8 +3,8 @@
 //Capturamos Datos Usuario
 getUserData();
 //Comprobamos los datos
-if(!checkUserData()) location="index.html"; //Si no se comprueban los datos de usuario, 
-                                        //se redirige a la página principal para evitar que pueda acceder al juego desde el navegador sin haber comprobado el formulario
+if (!checkUserData()) location = "index.html"; //Si no se comprueban los datos de usuario, 
+//se redirige a la página principal para evitar que pueda acceder al juego desde el navegador sin haber comprobado el formulario
 console.log(checkUserData());
 
 
@@ -71,12 +71,12 @@ function startGame() {
     clearInterval(timerInterval);
 
     score = 0;
-    keyItemScore= 0;
+    keyItemScore = 0;
     time = 120;
     ghostSpeed = 1500;
     ghosts = [];
     currentRound = 1;
-    
+
     finalRoundAttempts = 0;
     keyItemCaptured = false;
     keyyItemSpeed = 1500;
@@ -86,10 +86,11 @@ function startGame() {
     timeDisplay.value = time;
     scoreDisplay.value = score;
     currentRoundDisplay.value = currentRound;
-    keyItemScoreDisplay.value= keyItemScore;
+    keyItemScoreDisplay.value = keyItemScore;
     gameArea.innerHTML = "";
 
     gameInterval = setInterval(spawnGhost, ghostSpeed, spawnKeyItem, keyyItemSpeed);
+
     startTimer();
 }
 
@@ -100,12 +101,13 @@ function startTimer() {
             time--;
             timeDisplay.value = time;
         } else {
-            endGame("¡Tiempo agotado! Has perdido.");
+            endGame(message);
         }
     }, 1000);
 }
 
 // Finalizar el juego
+// Mostrar el mensaje de fin de juego en un modal
 function endGame(message) {
     clearInterval(gameInterval);
     clearInterval(timerInterval);
@@ -113,16 +115,48 @@ function endGame(message) {
     keyItems.forEach(keyItem => gameArea.removeChild(keyItem));
     ghosts = [];
     keyItems = [];
-    alert(`${message} Puntuación final: ${score}`);
+
+    // Mostrar el modal de fin de juego
+    const endGameModal = document.getElementById("endGameModal");
+    const endGameMessage = document.getElementById("endGameMessage");
+    const finalScore = document.getElementById("score");
+
+    // Asignar el mensaje y la puntuación final
+    endGameMessage.textContent = message;
+    finalScore.textContent = `Puntuación Final: ${score}`;
+
+    // Mostrar el modal
+    endGameModal.style.display = "block";
+
+    // Función para cerrar el modal
+    const closeModal = document.getElementById("closeEndGameModal");
+    closeModal.onclick = function () {
+        endGameModal.style.display = "none";
+    }
+
+    // Función para reiniciar el juego
+    const restartButton = document.getElementById("restartButton");
+    restartButton.onclick = function () {
+        endGameModal.style.display = "none";
+        startGame(); // Reinicia el juego
+    }
+
+    // Cerrar el modal si el usuario hace clic fuera de él
+    window.onclick = function (event) {
+        if (event.target === endGameModal) {
+            endGameModal.style.display = "none";
+        }
+    }
 }
+
 
 // Crear y mostrar un fantasma o el key item
 function spawnGhost() {
-    
+
     if (currentRound === 3 && !keyItemCaptured && keyItems.length === 0) {
         console.log('Entra en crear el KeyItem')
         spawnKeyItem(); // Aparecer key item solo en la ronda 3 si no ha sido capturado
-    }else {
+    } else {
         console.log('No entra een crear el KeyItem ')
     }
 
@@ -227,13 +261,13 @@ function spawnKeyItem() {
                 console.log("entra en SetTimeout de KeyItem")
                 gameArea.removeChild(keyItem);
                 keyItems = keyItems.filter(k => k !== keyItem); //NECESITO QUE ME EXPLIQUEN
-        }
+            }
         }, keyyItemSpeed);
-    
+
         // Ajustar velocidad y reiniciar intervalo de aparición
         keyyItemSpeed = Math.max(keyyItemSpeed - 15, 500); // Velocidad mínima de 500 ms
         clearInterval(gameInterval);
-    
+
         gameInterval = setInterval(spawnKeyItem, keyyItemSpeed);
 
 
@@ -250,12 +284,40 @@ function catchKeyItem(keyItem, keyItemScore) {
         gameArea.removeChild(keyItem);
         keyItems = keyItems.filter(item => item !== keyItem);
         keyItemCaptured = true;
-        keyItemScore ++;
+        keyItemScore++;
         keyItemScoreDisplay.value = "¡Atrapado!";
-        alert("¡Has capturado el objeto clave!");
-        checkRoundProgress();   
+        showMessage("¡Has capturado el objeto clave!");
+        checkRoundProgress();
     }
 }
+
+// Función para mostrar la ventana de mensaje
+function showMessage(message) {
+    const modal = document.getElementById("messageModal");
+    const modalMessage = document.getElementById("modalMessage");
+    modalMessage.textContent = message; // Cambiar el texto del mensaje
+    modal.style.display = "block"; // Mostrar el modal
+}
+
+// Función para cerrar el modal cuando se haga clic en el botón de cerrar
+function closeModal() {
+    const modal = document.getElementById("messageModal");
+    modal.style.display = "none"; // Ocultar el modal
+}
+
+// Función para cerrar el modal al hacer clic en el botón de continuar
+function continueGame() {
+    const modal = document.getElementById("messageModal");
+    modal.style.display = "none"; // Ocultar el modal
+    // Aquí podrías agregar lógica adicional, como continuar el juego, etc.
+}
+
+// Asignamos eventos al botón de continuar y al botón de cerrar
+document.getElementById("closeModal").onclick = closeModal;
+document.getElementById("continueButton").onclick = continueGame;
+
+
+
 
 // Verificar progreso de la ronda y avanzar si se cumple el objetivo
 function checkRoundProgress() {
@@ -263,23 +325,28 @@ function checkRoundProgress() {
         currentRound++;
         currentRoundDisplay.value = currentRound;
         caughtGhosts = 0;
-        alert(`¡Has avanzado a la ronda ${currentRound}!`);
+        showMessage(`¡Has avanzado a la ronda ${currentRound}!`);
     } else if (currentRound === 3 && caughtGhosts >= 10 && keyItemCaptured) {
-        endGame("¡Felicidades, has ganado el juego!");
+        endGame(message);
     } else if (currentRound === 3 && caughtGhosts >= 10 && !keyItemCaptured) {
         if (finalRoundAttempts < maxFinalRoundAttempts) {
             finalRoundAttempts++;
-            alert(`Te quedan ${maxFinalRoundAttempts - finalRoundAttempts + 1} intentos para capturar el objeto clave.`);
+            showMessage(`Te quedan ${maxFinalRoundAttempts - finalRoundAttempts + 1} intentos para capturar el objeto clave.`);
             caughtGhosts = 0;
             currentRoundDisplay.value = currentRound;
         } else {
-            endGame("Has perdido, no lograste capturar el objeto clave.");
+            endGame("Has perdido, no lograste capturar el objeto clave :(");
         }
     }
 }
 
 // Iniciar el juego al cargar la página
 window.onload = startGame;
-newGameButton.addEventListener("click", startGame);
+// Asignamos el evento de clic al botón de nueva partida
+newGameButton.addEventListener("click", function () {
+    showMessage("Reiniciando nueva partida"); // Muestra el mensaje solo al hacer clic
+    startGame(); // Inicia el juego
+});
+
 
 

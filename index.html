@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="css/estilos.css">
 
 </head>
+
 <body>
     <!---CABECERA-->
     <header>
@@ -30,48 +32,48 @@
                 <label for="email" class="labelemail">Correo electrónico:</label>
                 <input class="email" type="email" id="email">
             </div>
+
             <div class="itemform">
-                <label for="size" class="labelsizegame">Tamaño del juego</label>
-                <select id="size" class="select" name="size">
-                    <option value="0">Elige tamaño</option>
-                    <option value="1">4x4</option>
-                    <option value="2">5x5</option>
-                    <option value="3">6x6</option>
-                </select>
-                <div class="itemform">
-                    <label for="avatar" class="labelAvatarSelected">Arrastra tu avatar</label>
-                    <div id="avatarContainer">
-                        <!-- Avatar principal a la izquierda -->
-                        <div id="avatarSelected">
-                            <div id="avatarPrincipal">
-                                <img src="./img/avatarVampire-transformed.png" alt="avatar" id="avatarImg" draggable="true" width="110">
-                            </div>
+                <label for="avatar" class="labelAvatarSelected">Arrastra tu avatar</label>
+                <div id="avatarContainer">
+                    <!-- Avatar principal a la izquierda -->
+                    <div id="avatarSelected">
+                        <div id="avatarPrincipal">
+                            <img src="./img/avatarVampire-transformed.png" alt="avatar" id="avatarImg" draggable="true"
+                                width="110">
                         </div>
-                        <!-- Cuadrícula de avatares a la derecha -->
-                        <div id="avatargrid">
-                            <div class="avatarItem">
-                                <img src="./img/momieAvatar-transformed.png" class="avatarImgItem" data-avatar="mummy" alt="individualAvatar" width="90" draggable="true">
-                            </div>
-                            <div class="avatarItem">
-                                <img src="./img/SkelletonAvatar-transformed.png" class="avatarImgItem" data-avatar="skeleton" alt="individualAvatar" width="90" draggable="true">
-                            </div>
-                            <div class="avatarItem">
-                                <img src="./img/avatarVampire-transformed.png" class="avatarImgItem" data-avatar="vampire" alt="individualAvatar" width="90" draggable="true">
-                            </div>
-                            <div class="avatarItem">
-                                <img src="./img/CatAvatar-transformed.png" class="avatarImgItem" data-avatar="cat" alt="individualAvatar" width="95" draggable="true">
-                            </div>
-                            <div class="avatarItem">
-                                <img src="./img/zombiesAvatar-transformed.png" class="avatarImgItem" data-avatar="zombie" alt="individualAvatar" width="90" draggable="true">
-                            </div>
-                            <div class="avatarItem">
-                                <img src="./img/avatarWitch-transformed.png" class="avatarImgItem" data-avatar="witch" alt="individualAvatar" width="90" draggable="true">
-                            </div>     
+                    </div>
+                    <!-- Cuadrícula de avatares a la derecha -->
+                    <div id="avatargrid">
+                        <div class="avatarItem">
+                            <img src="./img/momieAvatar-transformed.png" class="avatarImgItem" data-avatar="mummy"
+                                alt="individualAvatar" width="90" draggable="true">
+                        </div>
+                        <div class="avatarItem">
+                            <img src="./img/SkelletonAvatar-transformed.png" class="avatarImgItem"
+                                data-avatar="skeleton" alt="individualAvatar" width="90" draggable="true">
+                        </div>
+                        <div class="avatarItem">
+                            <img src="./img/avatarVampire-transformed.png" class="avatarImgItem" data-avatar="vampire"
+                                alt="individualAvatar" width="90" draggable="true">
+                        </div>
+                        <div class="avatarItem">
+                            <img src="./img/CatAvatar-transformed.png" class="avatarImgItem" data-avatar="cat"
+                                alt="individualAvatar" width="95" draggable="true">
+                        </div>
+                        <div class="avatarItem">
+                            <img src="./img/zombiesAvatar-transformed.png" class="avatarImgItem" data-avatar="zombie"
+                                alt="individualAvatar" width="90" draggable="true">
+                        </div>
+                        <div class="avatarItem">
+                            <img src="./img/avatarWitch-transformed.png" class="avatarImgItem" data-avatar="witch"
+                                alt="individualAvatar" width="90" draggable="true">
                         </div>
                     </div>
                 </div>
-                
-                
+            </div>
+
+
             <div class="itemform">
                 <input id="jugar" class="jugar" type="submit" value="JUGAR">
             </div>
@@ -81,9 +83,10 @@
     <footer>
         <p>Curso FrontEnd HTML, CSS Y JSS</p>
     </footer>
-    
+
     <!--SRIPT-->
     <script src="./JS/datosusuario.js"></script>
-    <script src="./JS/app.js"></script>  
+    <script src="./JS/app.js"></script>
 </body>
+
 </html>
