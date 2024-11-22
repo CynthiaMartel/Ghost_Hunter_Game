@@ -151,7 +151,54 @@ form .contenedornick {
     align-items: center;
 }
 
+/* Estilo del Modal */
+.modal {
+    display: none;
+    /* Escondido por defecto */
+    position: fixed;
+    /* Fijo en la pantalla */
+    z-index: 1;
+    /* Se coloca sobre otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Permite desplazarse si el contenido es largo */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Fondo oscuro con opacidad */
+}
 
+.modal-content {
+    background-color: #424040;
+    margin: 15% auto;
+    /* Centra el modal en la pantalla */
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    /* Ancho del modal */
+    max-width: 500px;
+    /* Limita el ancho máximo */
+    text-align: center;
+}
+
+
+button {
+    background-color: rgb(137, 156, 172);
+    /* Color verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #3a3a3a;
+}
 
 
 

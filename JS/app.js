@@ -57,6 +57,23 @@ function changingImg(event) {
     sessionStorage.setItem("avatarType", selectedAvatarType);  // Guarda el tipo de avatar seleccionado en sessionStorage
 }
 
+// Función para mostrar la ventana de mensaje
+function showMessage(message) {
+    const modal = document.getElementById("messageModal");
+    const modalMessage = document.getElementById("modalMessage");
+    modalMessage.textContent = message; // Cambiar el texto del mensaje
+    modal.style.display = "block"; // Mostrar el modal
+}
+
+// Función para cerrar el modal al hacer clic en el botón de continuar
+function continueGame() {
+    const modal = document.getElementById("messageModal");
+    modal.style.display = "none"; // Ocultar el modal
+    // Aquí podrías agregar lógica adicional, como continuar el juego, etc.
+}
+
+// Asignamos eventos al botón de continuar 
+document.getElementById("continueButton").onclick = continueGame;
 
 
 //*Carga de objetos del DOM, comprobaciones y eventos del formulario*//
@@ -67,6 +84,7 @@ function domLoaded() {
     emailInput = document.getElementById("email"); // Captura el campo "email"
     formInput = document.getElementById("enterform"); // Captura el formulario
     error = document.getElementById("error"); // Captura el elemento de error
+    continueMessage = document.getElementById("continueButton");
 
     // Comprobar si hay algún error guardado de antes
     if (localStorage.getItem("error") != null) { // Revisa si hay un mensaje de error en el almacenamiento local
@@ -78,7 +96,9 @@ function domLoaded() {
     }
     //Inicio de carga de eventos
     // Aseguramos de que el formulario esté registrado después de cargar el DOM
+    
     formInput.addEventListener("submit", checkForm);
+    
 }    //addEventListener sirve para que el programa espere hasta que el usuario complete 
 //el formulario con las funciones de arriba y después ejerza el evento "submit" 
 

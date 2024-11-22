@@ -179,6 +179,7 @@ form .contenedornick {
     /* Añade una pequeña animación cuando es clicado */
 }
 
+
 .ghost:hover {
     transform: scale(1.1);
     /* Hace que el fantasma crezca un poco al pasar el mouse encima */

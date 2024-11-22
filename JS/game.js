@@ -152,7 +152,7 @@ function endGame(message) {
 
 // Crear y mostrar un fantasma o el key item
 function spawnGhost() {
-
+    console.log("Entra en crear fantasma..."); // Verifica si entra en la función
     if (currentRound === 3 && !keyItemCaptured && keyItems.length === 0) {
         console.log('Entra en crear el KeyItem')
         spawnKeyItem(); // Aparecer key item solo en la ronda 3 si no ha sido capturado
@@ -165,6 +165,7 @@ function spawnGhost() {
     ghost.classList.add("ghost");
     ghost.style.top = `${Math.random() * 90}%`;
     ghost.style.left = `${Math.random() * 90}%`;
+    console.log("Fantasma creado en", ghost.style.top, ghost.style.left);
 
     // Evento de captura de fantasma
     ghost.onclick = () => catchGhost(ghost);
