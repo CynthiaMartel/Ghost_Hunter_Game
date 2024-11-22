@@ -74,21 +74,24 @@
             </div>
 
 
+            <!-- Botón de enviar -->
             <div class="itemform">
-                <input id="jugar" class="jugar" type="submit" value="JUGAR">
+                <input id="jugar" class="jugar" type="button" value="JUGAR">
             </div>
+        
+            <!-- Modal de mensaje -->
+            <div id="messageModal" class="modal" style="display:none;">
+                <div class="modal-content">
+                    <p id="modalMessage"></p> <!-- Aquí se mostrará el mensaje -->
+                    <button id="continueButton" type="button">Continuar</button>
+                </div>
+        </div>
         </form>
     </main>
     <!--PIE DE PÁGINA-->
     <footer>
         <p></p>
     </footer>
-    <div id="messageModal" class="modal">
-        <div class="modal-content">
-            
-            <p id="modalMessage">¡Prepárate para cazar fantasmas! Tendrás 3 rondas que superar. Según el avatar seleccionado, tendrás que atrapar tu objeto mágico en la ronda final. ¡Vamos!</p>
-            <button id="continueButton">Continuar</button>
-        </div>
     </div>
     <!--SRIPT-->
     <script src="./JS/datosusuario.js"></script>
