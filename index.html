@@ -39,43 +39,50 @@
                     <!-- Avatar principal a la izquierda -->
                     <div id="avatarSelected">
                         <div id="avatarPrincipal">
-                            <img src="./img/avatarVampire-transformed.png" alt="avatar" id="avatarImg" draggable="true"
-                                width="110">
+                            <img src="./img/vampire_avatar2-transformed.png" alt="avatar" id="avatarImg" draggable="true"
+                                width="auto"
+                                height="auto">
                         </div>
                     </div>
                     <!-- Cuadrícula de avatares a la derecha -->
                     <div id="avatargrid">
                         <div class="avatarItem">
-                            <img src="./img/momieAvatar-transformed.png" class="avatarImgItem" data-avatar="mummy"
-                                alt="individualAvatar" width="90" draggable="true">
+                            <img src="./img/death-avatar2-transformed.png" class="avatarImgItem" data-avatar="death"
+                                alt="individualAvatar" width="250" draggable="true">
                         </div>
                         <div class="avatarItem">
-                            <img src="./img/SkelletonAvatar-transformed.png" class="avatarImgItem"
-                                data-avatar="skeleton" alt="individualAvatar" width="90" draggable="true">
+                            <img src="./img/vampire_avatar2-transformed.png" class="avatarImgItem"
+                                data-avatar="vampire" alt="individualAvatar" width="65" draggable="true">
                         </div>
                         <div class="avatarItem">
-                            <img src="./img/avatarVampire-transformed.png" class="avatarImgItem" data-avatar="vampire"
-                                alt="individualAvatar" width="90" draggable="true">
+                            <img src="./img/zombie-avatar3_transformed.png" class="avatarImgItem" data-avatar="zombie"
+                                alt="individualAvatar" width="70" draggable="true">
+                        </div>
+                        <div class="avatarItem">
+                            <img src="./img/wtich_avatar2-transformed.png" class="avatarImgItem" data-avatar="witch"
+                                alt="individualAvatar" width="60" draggable="true">
+                        </div>
+                        <div class="avatarItem">
+                            <img src="./img/skelleton-avatar2-transformed.png" class="avatarImgItem" data-avatar="skeleton"
+                                alt="individualAvatar" width="70" draggable="true">
                         </div>
                         <div class="avatarItem">
                             <img src="./img/CatAvatar-transformed.png" class="avatarImgItem" data-avatar="cat"
                                 alt="individualAvatar" width="95" draggable="true">
                         </div>
-                        <div class="avatarItem">
-                            <img src="./img/zombiesAvatar-transformed.png" class="avatarImgItem" data-avatar="zombie"
-                                alt="individualAvatar" width="90" draggable="true">
-                        </div>
-                        <div class="avatarItem">
-                            <img src="./img/avatarWitch-transformed.png" class="avatarImgItem" data-avatar="witch"
-                                alt="individualAvatar" width="90" draggable="true">
-                        </div>
                     </div>
                 </div>
             </div>
 
-
+            <!--Botón de jugar-->
             <div class="itemform">
-                <input id="jugar" class="jugar" type="submit" value="JUGAR">
+                <input id="jugar" class="jugar" type="button" value="JUGAR">
+            </div>
+            <!--Mensaje modal de explicación inicial-->
+            <div id="messageModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <p id="modalMessage"></p>
+                    <button id="continueButton" type="button">Continuar</button>
             </div>
         </form>
     </main>
@@ -83,12 +90,7 @@
     <footer>
         <p></p>
     </footer>
-    <div id="messageModal" class="modal">
-        <div class="modal-content">
-            
-            <p id="modalMessage">¡Prepárate para cazar fantasmas! Tendrás 3 rondas que superar. Según el avatar seleccionado, tendrás que atrapar tu objeto mágico en la ronda final. ¡Vamos!</p>
-            <button id="continueButton">Continuar</button>
-        </div>
+    
     </div>
     <!--SRIPT-->
     <script src="./JS/datosusuario.js"></script>

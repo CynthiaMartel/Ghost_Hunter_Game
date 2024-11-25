@@ -101,7 +101,8 @@ function startTimer() {
             time--;
             timeDisplay.value = time;
         } else {
-            endGame(message);
+            endGame();
+            console.log("Entra en finalizar juego");
         }
     }, 1000);
 }
@@ -220,22 +221,22 @@ function spawnKeyItem() {
         function setKeyItemImage(selectedAvatar) {
             switch (selectedAvatar) {
                 case "witch":
-                    keyItem.style.backgroundImage = "url('./img/KeyItemWitch5-transformed.png')";
+                    keyItem.style.backgroundImage = "url('./img/KeyItemWitch7-transformed.png')";
                     break;
                 case "skeleton":
                     keyItem.style.backgroundImage = "url('./img/KeyItemSkelleton1-transformed.png')";
                     break;
                 case "vampire":
-                    keyItem.style.backgroundImage = "url('./img/KeyItemVampire1-transformed.png')";
+                    keyItem.style.backgroundImage = "url('./img/KeItemVampire3-transformed.png')";
                     break;
                 case "cat":
-                    keyItem.style.backgroundImage = "url('./img/KeyItemCat-transformed.png')";
+                    keyItem.style.backgroundImage = "url('./img/KeyItemCat1-transformed.png')";
                     break;
                 case "zombie":
                     keyItem.style.backgroundImage = "url('./img/KeyItemZombie1-transformed.png')";
                     break;
-                case "mummy":
-                    keyItem.style.backgroundImage = "url('./img/KyItemMummy6-transformed.png')";
+                case "death":
+                    keyItem.style.backgroundImage = "url('./img/keyItemDeath-2-transformed.png.png')";
                     break;
                 default:
                     keyItem.style.backgroundImage = "url('./img/seta.png')";

@@ -58,34 +58,30 @@ main {
     /* Aplica margen superior e inferior de 10px */
 }
 
+
 .nicka {
-    width: 75px;
-    /* Ancho del avatar */
-    height: 70px;
-    text-align: center;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Mantiene proporción cuadrada */
+    object-fit: contain; /* Asegura que la imagen esté completamente visible */
+    display: block; /* Elimina márgenes inesperados */
     border-radius: 5px 0 0 5px;
-    /* Solo en las esquinas izquierda superior e inferior */
-    border: 1px solid rgb(126, 124, 124);
-    font-family: "Montserrat", sans-serif;
-    background-color: rgb(126, 124, 124);
-    box-sizing: border-box;
+    
+}
+.avatarContainerSelected {
+    display: flex; /* Asegura que los hijos se alineen correctamente */
+    justify-content: center; /* Centra la imagen dentro del contenedor */
+    align-items: center;
+    width: 139px; /* Tamaño fijo del contenedor */
+    height: 120px;
+    overflow: hidden; /* Evita que la imagen sobresalga */
+    background-color: whitesmoke; /* Fondo opcional */
+    border-radius: 5px;
+    border: 2px solid rgb(13, 13, 13);
 }
 
-#nick {
-    font-family: "Montserrat", sans-serif;
-    background-color: whitesmoke;
-    font-size: 20px;
-    width: 75px;
-    height: 70px;
-    padding: 10px;
-    border-radius: 0 5px 5px 0;
-    /* Solo en las esquinas derecha superior e inferior */
-    border: 1px solid #ccc;
-    border-left: none;
-    /* Elimina el borde izquierdo para unir visualmente con .nicka */
-    box-sizing: border-box;
-}
 
+#nick,
 #score,
 #time,
 #currentRound,
@@ -133,25 +129,6 @@ main {
     color: black;
 }
 
-
-.avatarImg {
-    width: 70px;
-    /* Ajusta el ancho del input con el valor "@" */
-    text-align: center;
-    border-radius: 5px 0px 0px 5px;
-    border: 1px solid rgb(126, 124, 124);
-    font-family: "Montserrat", sans-serif;
-    background-color: rgb(126, 124, 124);
-}
-
-form .contenedornick {
-    display: flex;
-    /* Alinea los inputs en fila */
-    gap: 0px;
-    /* Añade espacio entre los inputs */
-    width: auto;
-    box-sizing: border-box;
-}
 
 
 #gameArea {

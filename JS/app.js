@@ -30,7 +30,6 @@ function checkForm(event) {
         return false;// Se detiene aquí y no sigue si hay error
     }
 
-
     //INFO CORRECTA
     // Si todo está bien, continúa y se guardan los datos
     UserData(nickInput, emailInput, AvatarSelected); // Aquí se guarda la información
@@ -43,12 +42,7 @@ function movingImg(event) {
     console.log(itemImg.src); // Muestra en la consola la dirección de la imagen
 }
 
-/*function changingImg(event){
-    AvatarSelected.src = itemImg.src; // Cambia la imagen principal a la imagen que arrastraste en la página de entrada
-    console.log("Nueva imagen seleccionada:", AvatarSelected.src);
-    sessionStorage.setItem("avatarImg", AvatarSelected.src);
-    
-}*/
+
 function changingImg(event) {
     AvatarSelected.src = itemImg.src;  // Cambia la imagen principal a la imagen que arrastraste en la página de entrada
     const selectedAvatarType = itemImg.getAttribute("data-avatar");  // Captura el tipo de avatar usando data-avatar
@@ -57,49 +51,76 @@ function changingImg(event) {
     sessionStorage.setItem("avatarType", selectedAvatarType);  // Guarda el tipo de avatar seleccionado en sessionStorage
 }
 
-// Función para mostrar la ventana de mensaje
-function showMessage(message) {
+
+// Mostrar mensaje inicial al pulsar "JUGAR"
+function showMessage(event) {
+    event.preventDefault(); // Detener el envío del formulario
+
     const modal = document.getElementById("messageModal");
     const modalMessage = document.getElementById("modalMessage");
-    modalMessage.textContent = message; // Cambiar el texto del mensaje
+    modalMessage.textContent = "¡Prepárate para cazar fantasmas! Tendrás 3 rondas que superar. Según el avatar seleccionado, deberás atrapar tu objeto mágico en la ronda final. ¡Vamos!";
     modal.style.display = "block"; // Mostrar el modal
 }
 
-// Función para cerrar el modal al hacer clic en el botón de continuar
+// Continuar al juego
 function continueGame() {
     const modal = document.getElementById("messageModal");
     modal.style.display = "none"; // Ocultar el modal
-    // Aquí podrías agregar lógica adicional, como continuar el juego, etc.
+
+    // Validar los datos del formulario antes de redirigir
+    if (checkForm(event)) {
+        // Si los datos son correctos, redirigir
+        window.location.href = "game.html";
+    }
 }
 
-// Asignamos eventos al botón de continuar 
-document.getElementById("continueButton").onclick = continueGame;
+// Validación del formulario
+function checkForm(event) {
+    // Prevenir el envío por defecto
+    event.preventDefault();
+
+    // Comprobar si el campo de "nick" está vacío o empieza con un número
+    if (!nickInput.value || nickInput.value.match(/^\s*\d/)) {
+        error.innerText = "El campo de nick no puede estar vacío ni empezar por un número";
+        nickInput.focus(); // Coloca el cursor en el campo de "nick"
+        return false; // Detener el proceso
+    }
+
+    // Comprobar si hay un avatar seleccionado
+    if (!AvatarSelected || AvatarSelected.src.includes("default-avatar.png")) {
+        error.innerText = "Debes seleccionar un avatar antes de jugar.";
+        return false; // Detener el proceso
+    }
+
+    // Si todo está correcto, guarda los datos y permite continuar
+    UserData(nickInput, emailInput, AvatarSelected);
+    UserHistoric(nickInput);
+    return true;
+}
 
 
-//*Carga de objetos del DOM, comprobaciones y eventos del formulario*//
+// Cargar eventos en el DOM
 function domLoaded() {
     console.log("DOM cargado correctamente");
-    nickInput = document.getElementById("nick"); // Captura el campo "nick"
 
-    emailInput = document.getElementById("email"); // Captura el campo "email"
-    formInput = document.getElementById("enterform"); // Captura el formulario
-    error = document.getElementById("error"); // Captura el elemento de error
-    continueMessage = document.getElementById("continueButton");
+    // Capturar elementos del formulario
+    nickInput = document.getElementById("nick");
+    emailInput = document.getElementById("email");
+    formInput = document.getElementById("enterform");
+    error = document.getElementById("error");
 
-    // Comprobar si hay algún error guardado de antes
-    if (localStorage.getItem("error") != null) { // Revisa si hay un mensaje de error en el almacenamiento local
-        error.innerText = localStorage.getItem("error"); // Muestra el error guardado
-        // Borrar el mensaje de error después de un tiempo
-        setTimeout(() => {
-            localStorage.removeItem("error");
-        }, 3000); // Borrar el mensaje después de 3000 milisegundos
-    }
-    //Inicio de carga de eventos
-    // Aseguramos de que el formulario esté registrado después de cargar el DOM
-    
-    formInput.addEventListener("submit", checkForm);
-    
-}    //addEventListener sirve para que el programa espere hasta que el usuario complete 
+    // Evento para el botón "JUGAR"
+    const startGameButton = document.getElementById("jugar");
+    startGameButton.addEventListener("click", showMessage);
+
+    // Evento para el botón "Continuar"
+    const continueButton = document.getElementById("continueButton");
+    continueButton.addEventListener("click", continueGame);
+}
+
+// Ejecutar cuando se cargue el DOM
+window.addEventListener("DOMContentLoaded", domLoaded);
+//addEventListener sirve para que el programa espere hasta que el usuario complete 
 //el formulario con las funciones de arriba y después ejerza el evento "submit" 
 
 
