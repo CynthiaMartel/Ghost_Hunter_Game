@@ -145,7 +145,7 @@ main {
     width: 50px;
     /* Ajusta el tamaño del fantasma */
     height: 50px;
-    background-image: url('/img/goshtgif.gif');
+    background-image: url('../img/goshtgif.gif');
     /* Asegúrate de que esta ruta apunte a la imagen del fantasma */
     background-size: cover;
     position: absolute;
