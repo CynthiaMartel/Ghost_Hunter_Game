@@ -1,4 +1,3 @@
-
 <?php
 // Configuramos la cabecera para que esto envíe cabeceras HTTP al navegador de tipo JSON y no como html ni texto plano, y así el navegador devuelve datos en formato JSON
 header('Content-Type: application/json');
