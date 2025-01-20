@@ -1,20 +1,18 @@
 //JS para JUEGO en sí
 
 //Capturamos Datos Usuario
-getUserData();
-//Comprobamos los datos
-if (!checkUserData()) location = "index.html"; //Si no se comprueban los datos de usuario, 
-//se redirige a la página principal para evitar que pueda acceder al juego desde el navegador sin haber comprobado el formulario
-console.log(checkUserData());
+function getUserData() {
+    return sessionStorage.getItem('nick') && sessionStorage.getItem('avatar');
+}
 
 
-//Capturamos Daatos Usuario
+//Llamamos a captura de datos Usuario
 getUserData();
 //Comprobamos datos y Rellenamos formulario
 function filloutform() {
 
     let avatarElement = document.getElementById("avatarImg");
-    let avatarImg = sessionStorage.getItem('avatarImg'); // Verificamos si está almacenado
+    let avatarImg = sessionStorage.getItem('avatar'); // Verificamos si está almacenado
 
     // Verificamos si el avatarImg es nulo y establecemos un valor por defecto si es necesario
     if (!avatarImg) {
@@ -37,7 +35,7 @@ function filloutform() {
         nickElement.value = nick;
     }
 }
-
+// Llamamos a rellenar el formulario
 filloutform();
 setTimeout(filloutform, 100);  // Da un pequeño margen de tiempo para pasar a lo siguiente
 
@@ -109,7 +107,7 @@ function startTimer() {
 
 // Finalizar el juego
 // Mostrar el mensaje de fin de juego en un modal
-function endGame(message) {
+function endGame() {
     clearInterval(gameInterval);
     clearInterval(timerInterval);
     ghosts.forEach(ghost => gameArea.removeChild(ghost));
