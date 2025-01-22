@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const nickInput = document.getElementById("nick");
     const emailInput = document.getElementById("email");
-    const continueButton = document.getElementById("continueButton");
+    const jugar = document.getElementById("jugar");
     const errorDisplay = document.getElementById("error");
     const AvatarSelected = document.getElementsByClassName("avatarImgItem");
 
@@ -14,13 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
             AvatarSelected.src = event.target.src;
         });
     });
-    // Asignamos el evento al botón de "Jugar"
-    document.getElementById("jugar").addEventListener("click", function() {
-        showMessage("¡Prepárate para cazar fantasmas! Tendrás 3 rondas que superar. Según el avatar seleccionado, tendrás que atrapar tu objeto mágico en la ronda final. ¡Vamos!");
-    });
-
+    
     // Validar y enviar datos al servidor
-    continueButton.addEventListener("click", function (event) {
+    jugar.addEventListener("click", function (event) {
         event.preventDefault();
 
         const nick = nickInput.value.trim();
