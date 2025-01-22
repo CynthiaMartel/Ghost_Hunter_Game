@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Guardar datos en sessionStorage
         sessionStorage.setItem("nick", nick);
         sessionStorage.setItem("email", email);
-        sessionStorage.setItem("avatar", selectedAvatar);
+        sessionStorage.setItem("avatar", AvatarSelected.src);
 
         // Enviar datos al backend con AJAX
         const formData = new FormData();
