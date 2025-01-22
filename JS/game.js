@@ -1,17 +1,17 @@
 //JS para JUEGO en sí
 
-// Capturamos Datos Usuario
+//Capturamos Datos Usuario
 function getUserData() {
     return sessionStorage.getItem('nick') && sessionStorage.getItem('avatar');
 }
 
-// Llamamos a captura de datos Usuario
+
+//Llamamos a captura de datos Usuario
 getUserData();
-// Comprobamos datos y Rellenamos formulario
+//Comprobamos datos y Rellenamos formulario
 function filloutform() {
 
-    const avatarElement = document.getElementById("avatarImg");
-
+    let avatarElement = document.getElementById("avatarImg");
     let avatarImg = sessionStorage.getItem('avatar'); // Verificamos si está almacenado
 
     // Verificamos si el avatarImg es nulo y establecemos un valor por defecto si es necesario
@@ -35,6 +35,9 @@ function filloutform() {
         nickElement.value = nick;
     }
 }
+// Llamamos a rellenar el formulario
+filloutform();
+setTimeout(filloutform, 100);  // Da un pequeño margen de tiempo para pasar a lo siguiente
 
 let score = 1;
 let round = 0;
@@ -104,7 +107,7 @@ function startTimer() {
 
 // Finalizar el juego
 // Mostrar el mensaje de fin de juego en un modal
-function endGame() {
+function endGame(message) {
     clearInterval(gameInterval);
     clearInterval(timerInterval);
     ghosts.forEach(ghost => gameArea.removeChild(ghost));
@@ -145,6 +148,7 @@ function endGame() {
     }
 }
 
+
 // Crear y mostrar un fantasma o el key item
 function spawnGhost() {
     console.log("Entra en crear fantasma..."); // Verifica si entra en la función
@@ -152,7 +156,7 @@ function spawnGhost() {
         console.log('Entra en crear el KeyItem')
         spawnKeyItem(); // Aparecer key item solo en la ronda 3 si no ha sido capturado
     } else {
-        console.log('No entra en crear el KeyItem ')
+        console.log('No entra een crear el KeyItem ')
     }
 
     // Creación de los fantasmas
@@ -196,7 +200,7 @@ function catchGhost(ghost) {
 }
 
 // Verifica el avatar seleccionado en sessionStorage
-const selectedAvatar = sessionStorage.getItem("avatarType") || "default";
+const selectedAvatar = localStorage.getItem("avatarImg");
 
 // Cambia la imagen de fondo según el avatar seleccionado
 function spawnKeyItem() {
@@ -230,7 +234,7 @@ function spawnKeyItem() {
                     keyItem.style.backgroundImage = "url('./img/KeyItemZombie1-transformed.png')";
                     break;
                 case "death":
-                    keyItem.style.backgroundImage = "url('./img/keyItemDeath-2-transformed.png')";
+                    keyItem.style.backgroundImage = "url('./img/keyItemDeath-2-transformed.png.png')";
                     break;
                 default:
                     keyItem.style.backgroundImage = "url('./img/seta.png')";
@@ -254,7 +258,7 @@ function spawnKeyItem() {
 
         setTimeout(() => {
             if (keyItem.parentNode) {
-                console.log("entra en SetTimeout de KeyItem");
+                console.log("entra en SetTimeout de KeyItem")
                 gameArea.removeChild(keyItem);
                 keyItems = keyItems.filter(k => k !== keyItem); //NECESITO QUE ME EXPLIQUEN
             }
@@ -265,11 +269,14 @@ function spawnKeyItem() {
         clearInterval(gameInterval);
 
         gameInterval = setInterval(spawnKeyItem, keyyItemSpeed);
+
+
     } else {
         console.error("No se encontró avatar seleccionado en sessionStorage.");
     }
 
 }
+
 
 // Capturar el key item
 function catchKeyItem(keyItem, keyItemScore) {
@@ -308,7 +315,38 @@ function continueGame() {
 // Asignamos eventos al botón de continuar y al botón de cerrar
 document.getElementById("closeModal").onclick = closeModal;
 document.getElementById("continueButton").onclick = continueGame;
-filloutform();
+
+
+
+
+// Verificar progreso de la ronda y avanzar si se cumple el objetivo
+function checkRoundProgress() {
+    if (currentRound < 3 && caughtGhosts >= targetGhosts) {
+        currentRound++;
+        currentRoundDisplay.value = currentRound;
+        caughtGhosts = 0;
+        showMessage(`¡Has avanzado a la ronda ${currentRound}!`);
+    } else if (currentRound === 3 && caughtGhosts >= 10 && keyItemCaptured) {
+        endGame(message);
+    } else if (currentRound === 3 && caughtGhosts >= 10 && !keyItemCaptured) {
+        if (finalRoundAttempts < maxFinalRoundAttempts) {
+            finalRoundAttempts++;
+            showMessage(`Te quedan ${maxFinalRoundAttempts - finalRoundAttempts + 1} intentos para capturar el objeto clave.`);
+            caughtGhosts = 0;
+            currentRoundDisplay.value = currentRound;
+        } else {
+            endGame("Has perdido, no lograste capturar el objeto clave :(");
+        }
+    }
+}
+
+// Iniciar el juego al cargar la página
+window.onload = startGame;
+// Asignamos el evento de clic al botón de nueva partida
+newGameButton.addEventListener("click", function () {
+    showMessage("Reiniciando nueva partida"); // Muestra el mensaje solo al hacer clic
+    startGame(); // Inicia el juego
+});
 
 
 

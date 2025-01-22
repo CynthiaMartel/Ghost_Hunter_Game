@@ -20,17 +20,17 @@
         <div>
             <p id="error"></p>
         </div>
-        <form id="enterform" action="login.php" method="POST"> <!-- action="api/game.php" method="GET" -->
+        <form id="enterform" action="game.html"> <!-- action="api/game.php" method="GET" -->
             <div class="itemform">
                 <label for="nick" class="labelnick">Introduce tu nick:</label>
                 <div class="contenedornick">
                     <input id="nicka" class="nicka" type="text" value="@" name="nick" readonly>
-                    <input id="nick" class="nick" type="text" name="user" required minlength="3">
+                    <input id="nick" class="nick" type="text" name="nick" required minlength="3">
                 </div>
             </div>
             <div class="itemform">
                 <label for="email" class="labelemail">Correo electrónico:</label>
-                <input id="email" class="email" type="email" name="email" required>
+                <input class="email" type="email" id="email">
             </div>
 
             <div class="itemform">
@@ -82,7 +82,7 @@
             <div id="messageModal" class="modal" style="display: none;">
                 <div class="modal-content">
                     <p id="modalMessage"></p>
-                    <button id="continueButton" class="continueButton" type="button">Continuar</button>
+                    <button id="continueButton" type="button">Continuar</button>
                 </div>
             </div>
 
@@ -91,7 +91,6 @@
         </div>
 
         </form>
-        
     </main>
     <!--PIE DE PÁGINA-->
     <footer>
@@ -100,9 +99,8 @@
     
     </div>
     <!--SRIPT-->
-    
+    <script src="./JS/datosusuario.js"></script>
     <script src="./JS/app.js"></script>
-    <script src= "./login.php"></script>
 </body>
 
 </html>

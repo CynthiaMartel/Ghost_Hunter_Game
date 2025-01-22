@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const nickInput = document.getElementById("nick");
     const emailInput = document.getElementById("email");
-    const jugar = document.getElementById("jugar");
+    const jugarButton = document.getElementById("jugar");
     const errorDisplay = document.getElementById("error");
-    const AvatarSelected = document.getElementsByClassName("avatarImgItem");
+    const AvatarSelected = document.getElementById("avatarImg");
 
     let selectedAvatar = "";
 
@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
             AvatarSelected.src = event.target.src;
         });
     });
-    
+
     // Validar y enviar datos al servidor
-    jugar.addEventListener("click", function (event) {
+    jugarButton.addEventListener("click", function (event) {
         event.preventDefault();
 
         const nick = nickInput.value.trim();
